@@ -1,5 +1,3 @@
-# HACK_HERITAGE-CIPHERS
-
 PROBLEM STATEMENT:Online Chatbot based ticketing system
 
 Problem Statement ID:1648
