@@ -107,4 +107,20 @@ galleryAnimation(".destinations .gallery", [".destinations .gallery .box1",".des
 galleryAnimation(".featured .gallery", [".featured .gallery .box1",".featured .gallery .box2",".featured .gallery .box3",".featured .gallery .box4"])
 
 galleryAnimation(".feedback .voices", [".feedback .voices .box1",".feedback .voices .box2",".feedback .voices .box3",".feedback .voices .box4",".feedback .voices .box5",".feedback .voices .box6"])
+function startListening() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = 'en-US';
+  recognition.start();
 
+  recognition.onresult = function (event) {
+    const spokenText = event.results[0][0].transcript;
+    document.getElementById("voiceInput").innerText = "You said: " + spokenText;
+
+    // Optional: Pass this to your chatbot function
+    console.log("User:", spokenText);
+  };
+
+  recognition.onerror = function (event) {
+    console.error("Speech recognition error:", event.error);
+  };
+}
